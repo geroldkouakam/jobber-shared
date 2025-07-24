@@ -43,7 +43,6 @@ jobs:
       - name: Publish package       # Publish the package to npm
         run: npm publish
         working-directory: ./build
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      
 
     
