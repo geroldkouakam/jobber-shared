@@ -1,3 +1,7 @@
+# This workflow publishes the package to npm on push or pull request to master branch using GitHub Actions.
+# It requires an NPM_TOKEN secret to authenticate with npm.
+# Ensure you have set the NPM_TOKEN secret in your repository settings.
+
 name: Publish
 on:
   push:
@@ -6,35 +10,52 @@ on:
   pull_request:
     branches:
       - master
-
 jobs:
   publish:
     runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write
-
     steps:
-      - name: Checkout code
+      - name: Checkout code  # Checkout the repository code checkout@v4
         uses: actions/checkout@v4
 
-      - name: Set up Node.js with GitHub Packages auth
+      - name: Set up Node.js # Set up Node.js environment setup-node@v4
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          registry-url: 'https://npm.pkg.github.com'
-          scope: '@geroldkouakam'        # Your package scope here
-          always-auth: true              # Required to always send auth token
-          cache: 'npm'
+          node-version: '20'  # Specify the Node.js version
+          registry-url: 'https://npm.pkg.github.com'  # Set the npm registry URL
+          cache: 'npm'  # Enable npm caching
+      
+      - name: Authenticate to GitHub Packages (for install).  # Authenticate to GitHub Packages
+        run: |
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
 
-      - name: Install dependencies
+      - name: Install dependencies   # Install project dependencies
         run: npm install
 
-      - name: Build project
+      - name: Build project         # Build the project
         run: npm run build
 
-      - name: Publish package
-        run: npm publish
-        working-directory: ./build
+      - name: Copy and Append to files npmrc tests             # Copy and Append to files npmrc
+        run: |
+           echo "@geroldkouakam:registry=https://npm.pkg.github.com" > build/.npmrc
+           echo "//npm.pkg.github.com/:_authToken=${NPM_TOKEN}" >> build/.npmrc
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      
+
+      - name: Debug .npmrc contents
+        run: cat build/.npmrc
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+
+      - name: Publish package       # Publish the package to npm
+        run: npm publish --userconfig .npmrc 
+        working-directory: ./build
+        env: 
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      
+
+    
