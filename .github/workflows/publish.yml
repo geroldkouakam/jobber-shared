@@ -23,7 +23,7 @@ jobs:
       - name: Set up Node.js # Set up Node.js environment setup-node@v4
         uses: actions/setup-node@v4
         with:
-          node-version: '20'  # Specify the Node.js version
+          node-version: '18'  # Specify the Node.js version
           registry-url: 'https://npm.pkg.github.com'  # Set the npm registry URL
           cache: 'npm'  # Enable npm caching
       
@@ -34,7 +34,7 @@ jobs:
       - name: Install dependencies   # Install project dependencies
         run: npm install
 
-      - name: Build project         # Build the project
+      - name: Build project         # Build the project 
         run: npm run build
 
       - name: Copy and Append to files npmrc tests             # Copy and Append to files npmrc
@@ -43,13 +43,7 @@ jobs:
            echo "//npm.pkg.github.com/:_authToken=${NPM_TOKEN}" >> build/.npmrc
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-      
-
-      - name: Debug .npmrc contents
-        run: cat build/.npmrc
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-
+    
 
       - name: Publish package       # Publish the package to npm
         run: npm publish --userconfig .npmrc 
