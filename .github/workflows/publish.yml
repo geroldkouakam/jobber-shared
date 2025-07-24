@@ -31,6 +31,9 @@ jobs:
         run: |
           echo "//npm.pkg.github.com/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
 
+      - name: Clear old .npmrc
+        run: rm -f ~/.npmrc
+
       - name: Install dependencies   # Install project dependencies
         run: npm install
 
