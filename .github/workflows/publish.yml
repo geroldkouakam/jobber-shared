@@ -23,7 +23,9 @@ jobs:
       - name: Set up Node.js # Set up Node.js environment setup-node@v4
         uses: actions/setup-node@v4
         with:
-          node-version: '20.x'
+          node-version: '20'  # Specify the Node.js version
+          registry-url: 'https://npm.pkg.github.com'  # Set the npm registry URL
+          cache: 'npm'  # Enable npm caching
       
       - name: Authenticate to GitHub Packages (for install).  # Authenticate to GitHub Packages
         run: |
