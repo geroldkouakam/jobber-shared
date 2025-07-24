@@ -40,7 +40,6 @@
   "types": "./src/index.d.ts",
   "dependencies": {
     "@elastic/elasticsearch": "^9.0.3",
-    "@geroldkouakam/jobber-shared": "^0.0.1",
     "cloudinary": "^2.7.0",
     "express": "^5.1.0",
     "http-status-code": "^2.1.0",
