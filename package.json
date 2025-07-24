@@ -25,12 +25,12 @@
     "url": "git+https://github.com/geroldkouakam/jobber-shared.git"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "registry": "https://npm.pkg.github.com"  
   },
   "exports": {
     ".": {
-      "import": "./src/index.js",  
-      "require": "./src/index.js"
+      "import": "./esm/index.js",  
+      "require": "./cjs/index.js"
     },
     "./icons": {
       "import": "./esm/icons/index.js",
