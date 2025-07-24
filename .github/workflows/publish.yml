@@ -1,0 +1,45 @@
+# This workflow publishes the package to npm on push or pull request to master branch using GitHub Actions.
+# It requires an NPM_TOKEN secret to authenticate with npm.
+# Ensure you have set the NPM_TOKEN secret in your repository settings.
+
+name: Publish
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+
+      - name: Install dependencies   # Install project dependencies
+        run: npm install
+
+      - name: Build project         # Build the project
+        run: npm run build
+
+      - name: Copy and Append to files npmrc tests             # Copy and Append to files npmrc
+        run: |
+          echo @geroldkouakam:https://npm.pkg.github.com/ > build/.npmrc
+          echo '//npm.pkg.github.com/:_authToken=${NPM_TOKEN}' >> build/.npmrc
+
+      - name: Publish package       # Publish the package to npm
+        run: npm publish
+        working-directory: ./build
+        env:
+          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    
