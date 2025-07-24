@@ -2,7 +2,8 @@
 # It requires an NPM_TOKEN secret to authenticate with npm.
 # Ensure you have set the NPM_TOKEN secret in your repository settings.
 
-name: Publish
+name: Publish Package
+
 on:
   push:
     branches:
@@ -10,41 +11,42 @@ on:
   pull_request:
     branches:
       - master
+
 jobs:
   publish:
     runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write
+
     steps:
-      - name: Checkout code  # Checkout the repository code checkout@v4
+      - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Node.js # Set up Node.js environment setup-node@v4
+      - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20.x'
-      
-      - name: Authenticate to GitHub Packages (for install).  # Authenticate to GitHub Packages
-        run: |
-          echo "//npm.pkg.github.com/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+          # This automatically authenticates to GitHub Packages using NODE_AUTH_TOKEN
+          registry-url: 'https://npm.pkg.github.com/'
 
-      - name: Install dependencies   # Install project dependencies
+      - name: Install dependencies
         run: npm install
 
-      - name: Build project         # Build the project
+      - name: Build project
         run: npm run build
 
-      - name: Copy and Append to files npmrc tests             # Copy and Append to files npmrc
+      - name: Create .npmrc for publishing
         run: |
-          echo "@geroldkouakam:https://npm.pkg.github.com/" > build/.npmrc
-          echo "//npm.pkg.github.com/:_authToken=${{ secrets.NPM_TOKEN }}" >> build/.npmrc
+          echo "@geroldkouakam:registry=https://npm.pkg.github.com/" > build/.npmrc
+          echo "//npm.pkg.github.com/:_authToken=\${NODE_AUTH_TOKEN}" >> build/.npmrc
 
-      - name: Publish package       # Publish the package to npm
-        run: npm publish --userconfig .npmrc
+      - name: Publish package
+        run: npm publish
         working-directory: ./build
-        env: 
+        env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
       
 
     
