@@ -15,12 +15,12 @@ export {
     IReduxLogout,
     IAuthResponse,
     IAuthUser,
-} from './src/interfaces/auth.interface';
+} from './src/auth.interface';
 
 
 export { IBuyerDocument,
          IReduxBuyer
-       } from './src/interfaces/buyer.interface';
+       } from './src/buyer.interface';
 
 
 export {
@@ -32,7 +32,7 @@ export {
     IChatBuyerProps,
     IChatMessageProps,
 
-} from './src/interfaces/chat.interface';
+} from './src/chat.interface';
 
 export{
     GigType,
@@ -44,7 +44,7 @@ export{
     IGigViewReviewsProps,
     IGigInfo,
     IGigTopProps,
-} from './src/interfaces/gig.interface';
+} from './src/gig.interface';
 
 export {
     IOrderNotification,
@@ -55,7 +55,7 @@ export {
     IOrderReview,
     IOrderMessage,
     IOrderDocument,
-} from './src/interfaces/order.interface';
+} from './src/order.interface';
 
 export {
     IReviewMessageDetails,
@@ -63,7 +63,7 @@ export {
     IRatingCategories,
     IRatingCategoryItem,
     IReviewDocument,
-} from './src/interfaces/review.interface';
+} from './src/review.interface';
 
 export {
     ISearchResult,
@@ -72,7 +72,7 @@ export {
     IQueryString,
     ITerm,
     IPaginateProps,
-} from './src/interfaces/search.interface';
+} from './src/search.interface';
 
 export {
     SellerType,
@@ -81,12 +81,12 @@ export {
     IEducation,
     ICertificate,
     ISellerDocument,
-} from './src/interfaces/seller.interface';
+} from './src/seller.interface';
 
 
 export {
     IEmailLocals,
-} from './src/interfaces/email.interface';
+} from './src/email.interface';
 
 export {
     uploads,
