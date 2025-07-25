@@ -31,6 +31,15 @@ jobs:
       - name: Build project         # Build the project 
         run: npm run build
 
+      - name: Debug build contents
+        run: |
+          echo "Contents of build/"
+          ls -la build/
+          echo "------"
+          cat build/.npmrc
+          echo "------"
+          cat build/package.json
+
       - name: Copy and Append to files npmrc tests             # Copy and Append to files npmrc ///
         run: |
            echo "@geroldkouakam:https://npm.pkg.github.com" > build/.npmrc
