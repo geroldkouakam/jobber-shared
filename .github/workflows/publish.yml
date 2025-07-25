@@ -27,7 +27,7 @@ jobs:
           registry-url: 'https://npm.pkg.github.com'  # Set the npm registry URL
           cache: 'npm'  # Enable npm caching
       
-      - name: Authenticate to GitHub Packages (for install).  # Authenticate to GitHub Packagess
+      - name: Authenticate to GitHub Packages (for install).  # Authenticate to GitHub Packages
         run: |
           echo "//npm.pkg.github.com/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
 
