@@ -35,7 +35,7 @@ jobs:
       - name: Copy and Append to files npmrc tests             # Copy and Append to files npmrc ///
         run: |
           mkdir -p build
-          echo "@geroldkouakam:registry=https://npm.pkg.github.com" > build/.npmrc
+          echo "@geroldkouakam:registry=https://npm.pkg.github.com/" > build/.npmrc
           echo "//npm.pkg.github.com/:_authToken=${NPM_TOKEN}" >> build/.npmrc
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -55,4 +55,4 @@ jobs:
         run: npm publish 
         working-directory: ./build
         env: 
-          NPM_TOKEN: ${NPM_TOKEN}
+         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
