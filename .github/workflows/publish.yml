@@ -38,7 +38,7 @@ jobs:
       - name: Build project         # Build the project 
         run: npm run build
 
-      - name: Copy and Append to files npmrc tests             # Copy and Append to files npmrc
+      - name: Copy and Append to files npmrc tests             # Copy and Append to files npmrc ///
         run: |
            echo "@geroldkouakam:https://npm.pkg.github.com" > build/.npmrc
            echo "//npm.pkg.github.com/:_authToken=${NPM_TOKEN}" >> build/.npmrc
