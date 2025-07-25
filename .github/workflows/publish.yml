@@ -23,7 +23,8 @@ jobs:
       - name: Set up Node.js # Set up Node.js environment setup-node@v4
         uses: actions/setup-node@v4
         with:
-          node-version: '20.x'  # Specify the Node.js version
+          node-version: "lts/*"
+          registry-url: "https://registry.npmjs.org"  # Specify the Node.js version
 
       - name: Install dependencies   # Install project dependencies
         run: npm install

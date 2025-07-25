@@ -25,7 +25,8 @@
     "url": "git+https://github.com/geroldkouakam/jobber-shared.git"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com"  
+    "access": "public",
+    "registry": "https://npm.pkg.github.com"
   },
   "exports": {
     ".": {
