@@ -1,7 +1,7 @@
 {
   "version": "0.0.1",
   "license": "MIT",
-  "main": "index.js",
+  "types": "./build/src/index.d.ts",
   "description": "Helpers library for Jobber app",
   "engines": {
     "node": ">=20"
@@ -25,20 +25,22 @@
     "url": "git+https://github.com/geroldkouakam/jobber-shared.git"
   },
   "publishConfig": {
-    "access": "public",
     "registry": "https://npm.pkg.github.com"
   },
+  "files": [
+    "build",
+    "src"
+  ],
   "exports": {
     ".": {
       "import": "./build/src/index.js",
       "require": "./build/src/index.js"
     },
     "./icons": {
-      "import": "./build/esm/icons/index.js",
-      "require": "./build/cjs/icons/index.js"
+      "import": "./build/src/index.js",
+      "require": "./build/src/index.js"
     }
   },
-  "types": "./src/index.d.ts",
   "dependencies": {
     "@elastic/elasticsearch": "^9.0.3",
     "cloudinary": "^2.7.0",
