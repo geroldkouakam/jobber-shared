@@ -1,4 +1,3 @@
-import { isNamespaceExport } from 'typescript';
 
 export {
     IAuthPayload,
@@ -15,12 +14,12 @@ export {
     IReduxLogout,
     IAuthResponse,
     IAuthUser,
-} from './src/auth.interface';
+} from './auth.interface';
 
 
 export { IBuyerDocument,
          IReduxBuyer
-       } from './src/buyer.interface';
+       } from './buyer.interface';
 
 
 export {
@@ -32,7 +31,7 @@ export {
     IChatBuyerProps,
     IChatMessageProps,
 
-} from './src/chat.interface';
+} from './chat.interface';
 
 export{
     GigType,
@@ -44,7 +43,7 @@ export{
     IGigViewReviewsProps,
     IGigInfo,
     IGigTopProps,
-} from './src/gig.interface';
+} from './gig.interface';
 
 export {
     IOrderNotification,
@@ -55,7 +54,7 @@ export {
     IOrderReview,
     IOrderMessage,
     IOrderDocument,
-} from './src/order.interface';
+} from './order.interface';
 
 export {
     IReviewMessageDetails,
@@ -63,7 +62,7 @@ export {
     IRatingCategories,
     IRatingCategoryItem,
     IReviewDocument,
-} from './src/review.interface';
+} from './review.interface';
 
 export {
     ISearchResult,
@@ -72,7 +71,7 @@ export {
     IQueryString,
     ITerm,
     IPaginateProps,
-} from './src/search.interface';
+} from './search.interface';
 
 export {
     SellerType,
@@ -81,17 +80,17 @@ export {
     IEducation,
     ICertificate,
     ISellerDocument,
-} from './src/seller.interface';
+} from './seller.interface';
 
 
 export {
     IEmailLocals,
-} from './src/email.interface';
+} from './email.interface';
 
 export {
     uploads,
     videoUpload
-} from './src/cloudinary-upload';
+} from './cloudinary-upload';
 
 
 export {
@@ -104,15 +103,15 @@ export {
     FileTooLargeError,
     ServerError,
     ErrnoException,
-} from './src/error-handler';
+} from './error-handler';
 
 export {
     verifyGatewayRequest,
-} from './src/gateway-middleware';
+} from './gateway-middleware';
 
 export {
     winstonLogger,
-} from './src/logger';
+} from './logger';
 
 export{
     firstLetterUppercase,
@@ -120,4 +119,4 @@ export{
     toUpperCase,
     isEmail,
     isDataURL
-} from './src/helpers';
+} from './helpers';

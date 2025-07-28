@@ -40,7 +40,6 @@ jobs:
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      
       - name: Debug build contents
         run: |
           echo "Contents of build/"
@@ -49,7 +48,6 @@ jobs:
           cat build/.npmrc
           echo "------"
           cat build/package.json
-    
 
       - name: Publish package       # Publish the package to npm
         run: npm publish 

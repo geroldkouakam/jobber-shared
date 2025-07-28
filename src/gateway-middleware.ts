@@ -1,11 +1,9 @@
 import JWT from 'jsonwebtoken';
 import { Request, Response, NextFunction } from 'express';
 import { NotAuthorizedError } from './error-handler';
-import { Id } from '@elastic/elasticsearch/lib/api/types';
+
 
 const tokens: string[] = ['auth', 'seller', 'gig', 'search', 'buyer', 'message', 'order', 'review'];
-
-
 
     export function verifyGatewayRequest(req: Request, res: Response, next: NextFunction): void {
 
