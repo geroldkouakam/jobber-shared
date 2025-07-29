@@ -29,13 +29,13 @@
     "registry": "https://npm.pkg.github.com"
   },
   "files": [
-    "build",
-    "src"
+    "build/src"
   ],
   "exports": {
     ".": {
       "import": "./build/src/index.js",
-      "require": "./build/src/index.js"
+      "require": "./build/src/index.js",
+      "types": "./build/src/index.d.ts"
     },
     "./icons": {
       "import": "./build/src/index.js",

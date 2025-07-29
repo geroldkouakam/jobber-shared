@@ -11,7 +11,7 @@
     "moduleResolution": "node",
     "noEmitOnError": true,
     "outDir": "build/src",
-    "rootDir": "src",
+     "rootDir": "src",
     "sourceMap": true,
     "strict": true,
     "target": "es2021",
