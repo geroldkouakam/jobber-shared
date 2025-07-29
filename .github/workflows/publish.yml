@@ -1,6 +1,6 @@
 # This workflow publishes the package to npm on push or pull request to master branch using GitHub Actions.
 # It requires an NPM_TOKEN secret to authenticate with npm.
-# Ensure you have set the NPM_TOKEN secret in your repository settings. thanks to God for all
+# Ensure you have set the NPM_TOKEN secret in your repository settings. thanks to God for all your help
 
 name: Publish
 on:
