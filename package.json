@@ -8,9 +8,11 @@
     "node": ">=20"
   },
   "scripts": {
-    "build": "npm run build:cjs && npm run build:esm && tsc --outDir build/src && node scripts/build-package.js",
+    "clean": "rm -rf build",
     "build:cjs": "NODE_ENV=production BABEL_ENV=cjs babel src --presets=./scripts/babel-preset.js --extensions .ts,.tsx --ignore src/**/*.specs.tsx --out-dir build/cjs --source-maps",
-    "build:esm": "NODE_ENV=production BABEL_ENV=esm babel src --presets=./scripts/babel-preset.js --extensions .ts,.tsx --ignore src/**/*.specs.tsx --out-dir build/esm --source-maps"
+    "build:esm": "NODE_ENV=production BABEL_ENV=esm babel src --presets=./scripts/babel-preset.js --extensions .ts,.tsx --ignore src/**/*.specs.tsx --out-dir build/esm --source-maps",
+    "build:types": "tsc --emitDeclarationOnly --outDir build/src",
+    "build": "npm run clean && npm run build:cjs && npm run build:esm && npm run build:types && node scripts/build-package.js"
   },
   "prettier": {
     "printWidth": 80,
