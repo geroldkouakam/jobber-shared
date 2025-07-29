@@ -1,24 +1,22 @@
 {
   "version": "0.0.1",
   "license": "MIT",
-  "main": "./build/src/index.js",
+  "main": "index.js",
   "types": "./build/src/index.d.ts",
   "description": "Helpers library for Jobber app",
   "engines": {
     "node": ">=20"
   },
   "scripts": {
-    "clean": "rm -rf build",
+    "build": "npm run build:cjs && npm run build:esm && tsc --outDir build/src && node scripts/build-package.js",
     "build:cjs": "NODE_ENV=production BABEL_ENV=cjs babel src --presets=./scripts/babel-preset.js --extensions .ts,.tsx --ignore src/**/*.specs.tsx --out-dir build/cjs --source-maps",
-    "build:esm": "NODE_ENV=production BABEL_ENV=esm babel src --presets=./scripts/babel-preset.js --extensions .ts,.tsx --ignore src/**/*.specs.tsx --out-dir build/esm --source-maps",
-    "build:types": "tsc  --outDir build/src",
-    "build": "npm run clean && npm run build:cjs && npm run build:esm && npm run build:types && node scripts/build-package.js"
+    "build:esm": "NODE_ENV=production BABEL_ENV=esm babel src --presets=./scripts/babel-preset.js --extensions .ts,.tsx --ignore src/**/*.specs.tsx --out-dir build/esm --source-maps"
   },
   "prettier": {
     "printWidth": 80,
     "semi": true,
     "singleQuote": true,
-    "trailingComma": "es5"
+    "trailingComma": "es5"   
   },
   "keywords": [],
   "name": "@geroldkouakam/jobber-shared",
@@ -31,7 +29,8 @@
     "registry": "https://npm.pkg.github.com"
   },
   "files": [
-    "build/src"
+    "build",
+    "src"
   ],
   "exports": {
     ".": {
