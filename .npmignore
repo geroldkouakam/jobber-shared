@@ -1,0 +1,7 @@
+src
+scripts
+*.ts
+*.tsx
+.gitignore
+.vscode
+tests
